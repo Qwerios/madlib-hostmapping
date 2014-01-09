@@ -103,7 +103,7 @@
             cleanHostName = @extractHostName( hostName )
             allXdmConfigs = settings.get( "xdmConfig" )
 
-            return allXdmConfigs[ cleanName ]
+            return allXdmConfigs[ cleanHostName ]
 
         extractHostName: ( url ) ->
             url.replace( /(^https?:)?\/\//, "" ).split( "/" ).slice( 0, 1 ).pop().split( ":" ).slice( 0, 1 ).pop()
