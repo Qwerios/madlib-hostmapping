@@ -66,7 +66,7 @@
             # Non browser environments or developer builds will want to override
             # detected settings
             #
-            overrideMapping settings.get( "overrideMapping" )
+            overrideMapping = settings.get( "overrideMapping" )
             if overrideMapping?
                 settings.set( "currentHostMapping", overrideMapping )
 
