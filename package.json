@@ -2,7 +2,7 @@
   "name": "madlib-hostmapping",
   "description": "A reusable host mapping construction for use in other modules. Contains host mapping, environment hosts and cross domain configuration settings.",
   "main": "lib/index.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": {
     "name": "Mark Doeswijk",
     "email": "mark.doeswijk@marviq.com",
