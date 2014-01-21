@@ -5,13 +5,13 @@
 ( ( factory ) ->
     if typeof exports is "object"
         module.exports = factory(
-            require "madLib-console"
-            require "madLib-object-utils"
+            require "madlib-console"
+            require "madlib-object-utils"
         )
     else if typeof define is "function" and define.amd
         define( [
-            "madLib-console"
-            "madLib-object-utils"
+            "madlib-console"
+            "madlib-object-utils"
         ], factory )
 
 )( ( console, objectUtils ) ->
@@ -62,7 +62,7 @@
             @settings = settings
 
         overrideMapping: ( newMapping ) ->
-            @settings.set( "currentHostMapping", newMapping )
+            @settings.set( "overrideMapping", newMapping )
 
         determineTarget: ( hostname ) ->
             # Non browser environments or developer builds will want to override
@@ -72,7 +72,7 @@
             if overrideMapping?
                 @settings.set( "currentHostMapping", overrideMapping )
 
-                console.log( "[hostMapping] Override active: #{@settings.overrideMapping}" )
+                console.log( "[hostMapping] Override active: #{overrideMapping}" )
             else
                 allHostMappings = @settings.get( "hostMapping" )
 
@@ -83,7 +83,8 @@
 
                 if allHostMappings[ hostname ]?
                     @settings.set( "currentHostMapping", allHostMappings[ hostname ] )
-                    console.log( "[hostMapping] Target found: #{@settings.currentMapping}" )
+                    currentMapping = @settings.get( "currentHostMapping" )
+                    console.log( "[hostMapping] Target found: #{currentMapping}" )
 
                 else
                     @settings.set( "currentHostMapping", "production" )
@@ -98,6 +99,9 @@
             currentHostMapping = @settings.get( "currentHostMapping" )
 
             objectUtils.getValue( "#{currentHostMapping}.#{hostType}", allHostConfigs )
+
+        getCurrentHostMapping: () ->
+            @settings.get( "currentHostMapping" )
 
         getXdmSettings: ( hostName ) ->
             # Extract the hostName (without protocol and paths)
