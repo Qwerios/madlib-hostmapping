@@ -77,4 +77,3 @@ xhr.call( {
 .then( ... )
 .done()
 ```
-```
