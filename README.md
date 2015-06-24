@@ -70,7 +70,7 @@ var XHR         = require( "madlib-xhr" );
 
 // targetHost is determined based on your environment (production, testing, etc)
 //
-var targetHost = hostMappig.getHostName( "api" );
+var targetHost = hostMapping.getHostName( "api" );
 
 var xhr = new XHR( settings );
 xhr.call( {
